@@ -139,7 +139,7 @@ ADD(11, 1, 100)
 問題1.5.2.
 MUL(3):
     MUL(x, 0, 0);
-    MUL(0, y, 0);
+    MUL(0, x, 0);
     MUL(x, 1, x);
     MUL(1, x, x);
     MUL(x, y, z)->CON(x, 0, w)->CON(z, 0, v)->MUL(w, y, v);
@@ -148,3 +148,41 @@ MUL(3):
     ->CON(x, 1, t)->MUL(t, y, u);
     MUL(x, y, z)->CON(y, 0, w)->MUL(x, w, v)->ADD(x, v, u)
     ->CON(y, 1, t)->MUL(x, t, u).
+
+問題1.5.3.
+(a)
+LETTER(1):
+    LETTER(a_1);
+    LETTER(a_2);
+    ...
+    LETTER(a_n).
+
+(b)
+SAMELENGTH(2):
+    SAMELENGTH('', '');
+    LETTER(x)->LETTER(y)->SAMELENGTH(x, y);
+    SAMELENGTH(x, y)->LETTER(z)->LETTER(w)
+    ->CON(x, z, v)->CON(y, w, u)->LETTER(v, u).
+
+(c)
+SHORTER(2):
+    SHORTER('', x);
+    SHORTER(x, y)->LETTER(z)->CON(y, w)->SHORTER(x, w);
+    SHORTER(x, y)->LETTER(z)->LETTER(w)->CON(x, z, v)->CON(y, w, u)
+    ->SHORTER(v, u).
+
+(d)
+DIFFERENT_LENGTH(2):
+    SHORTER(x, y)->DIFFERENT_LENGTH(x, y);
+    SHORTER(x, y)->DIFFERENT_LENGTH(y, x).
+
+(e)
+EQUAL(2):
+    EQUAL(x, x);
+    EQUAL(x, y)->LETTER(z)->CON(x, z, w)->EQUAL(w, w).
+
+(f)
+DIFFERENT_LETTER(2):
+    LETTER(x)->DIFFERENT_LETTER(x, '');
+    LETTER(x)->DIFFERENT_LETTER('', x);
+    ATODE_KAKU.
