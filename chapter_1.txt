@@ -150,7 +150,7 @@ MUL(3):
     ->CON(y, 1, t)->MUL(x, t, u).
 
 問題1.5.3.
-(a)
+(a) これでいいのか.
 LETTER(1):
     LETTER(a_i). // 1 <= i <= n
 
@@ -164,7 +164,7 @@ SAMELENGTH(2):
 (c)
 SHORTER(2):
     SHORTER('', x);
-    SHORTER(x, y)->LETTER(z)->CON(y, w)->SHORTER(x, w);
+    SHORTER(x, y)->LETTER(z)->CON(y, z, w)->SHORTER(x, w);
     SHORTER(x, y)->LETTER(z)->LETTER(w)->CON(x, z, v)->CON(y, w, u)
     ->SHORTER(v, u).
 
