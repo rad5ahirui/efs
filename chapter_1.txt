@@ -152,10 +152,7 @@ MUL(3):
 問題1.5.3.
 (a)
 LETTER(1):
-    LETTER(a_1);
-    LETTER(a_2);
-    ...
-    LETTER(a_n).
+    LETTER(a_i). // 1 <= i <= n
 
 (b)
 SAMELENGTH(2):
@@ -179,10 +176,23 @@ DIFFERENT_LENGTH(2):
 (e)
 EQUAL(2):
     EQUAL(x, x);
-    EQUAL(x, y)->LETTER(z)->CON(x, z, w)->EQUAL(w, w).
+    EQUAL(x, y)->CON(x, z, w)->EQUAL(w, w).
 
-(f)
+(f) わからない.
 DIFFERENT_LETTER(2):
-    LETTER(x)->DIFFERENT_LETTER(x, '');
-    LETTER(x)->DIFFERENT_LETTER('', x);
-    ATODE_KAKU.
+    DIFFERENT_LETTER(a_i, a_j); // i < j
+    DIFFERENT_LETTER(x, y)->DIFFERENT_LETTER(y, x).
+
+(g)
+NOT_EQUAL(2):
+    SAMELENGTH(x, y)->DIFFERENT_LETTER(z, w)->CON(x, z, v)->CON(y, w, u)
+    ->NOT_EQUAL(v, u);
+    SHORTER(x, y)->NOT_EQUAL(x, y);
+    NOT_EQUAL(x, y)->NOT_EQUAL(y, x).
+
+(h)
+SUBWORD(2):
+    SUBWORD(x, x);
+    SUBWORD('', x);
+    EQUAL(x, y)->LETTER(z)->CON(y, z, w)->SUBWORD(x, w);
+    EQUAL(x, y)->LETTER(z)->CON(z, y, w)->SUBWORD(x, w).
