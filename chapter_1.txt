@@ -171,12 +171,11 @@ SHORTER(2):
 (d)
 DIFFERENT_LENGTH(2):
     SHORTER(x, y)->DIFFERENT_LENGTH(x, y);
-    SHORTER(x, y)->DIFFERENT_LENGTH(y, x).
+    DIFFERENT_LENGTH(x, y)->DIFFERENT_LENGTH(y, x).
 
 (e)
 EQUAL(2):
     EQUAL(x, x);
-    EQUAL(x, y)->CON(x, z, w)->EQUAL(w, w).
 
 (f) わからない.
 DIFFERENT_LETTER(2):
