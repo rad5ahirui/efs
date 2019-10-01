@@ -1,0 +1,43 @@
+問題2.1.1.
+(a)
+NOT_DIVIDES(2):
+    NOT_ZERO(r)->REMAINDER(a, b, r)->NOT_DIVIDES(a, b).
+
+(b)
+EVEN(1):
+    EVEN(0);
+    EVEN(x)->SUM(x, 2, y)->EVEN(y).
+
+(c)
+NOT_EVEN(1):
+    EVEN(x)->SUC(x, y)->NOT_EVEN(y).
+
+(d)
+POWER_OF_TWO(1):
+    POWER_OF_TWO(1);
+    POWER_OF_TWO(x)->PROD(x, 2, y)->POWER_OF_TWO(y).
+
+(e)
+NOT_POWER_OF_TWO(1):
+    POWER_OF_TWO(x)->POWER_OF_TWO(y)->QUOTIENT(x, y, 2)
+    ->LESS(x, z)->LESS(z, y)->NOT_POWER_OF_TWO(z).
+
+(f)
+POWER(2):
+    NOT_ZERO(y)->POWER(1, y);
+    POWER(x, y)->PROD(x, y, z)->POWER(z, y).
+
+(g)
+NOT_PRIME(2):
+    NOT_PRIME(0);
+    NOT_PRIME(1);
+    NOT_ZERO(q)->LESS(b, a)->QUOTIENT_AND_REMAINDER(a, b, q, 0)
+    ->NOT_PRIME(a).
+
+(h)
+RELPRIME(2):
+    ATO_DE_KA(k, u).
+
+(i)
+BASE_TWO_LENGTH(2).
+    ATO_DE_KA(k, u).
