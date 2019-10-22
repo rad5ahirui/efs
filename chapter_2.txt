@@ -37,7 +37,7 @@ NOT_PRIME(2):
 (h)
 RELPRIME(2):
     NOT_ZERO(a)->NOT_ZERO(b)->PROD(a, x, p)->PROD(b, y, q)
-    ->SUM(p, q, 1)->RELPRIME(p, q).
+    ->SUM(p, q, 1)->RELPRIME(a, b).
 
 (i)
 BASE_TWO_LENGTH(2):
@@ -47,3 +47,29 @@ BASE_TWO_LENGTH(2):
     ->SUC(y, w)->BASE_TWO_LENGTH(z, w);
     NOT_ZERO(x)->BASE_TWO_LENGTH(x, y)->SUC(x, z)->NOT_POWER_OF_TWO(z)
     ->BASE_TWO_LENGTH(z, y).
+
+問題2.3.1.
+SUBTREE(2):
+    IMSUB(x, l, r)->SUBTREE(x, x);
+    IMSUB(x, l, r)->SUBTREE(x, l);
+    IMSUB(x, l, r)->SUBTREE(x, r);
+    SUBTREE(x, y)->SUBTREE(z, w)->SUBTREE(x, w).
+
+問題2.3.2.
+a, bを異なる原子記号とする.
+NUM(2):
+    NUM(b);
+    NUM(x)->IMSUB(y, a, x)->NUM(y).
+
+問題2.3.3.
+SUC(2):
+    NUM(x)->IMSUB(y, a, x)->SUC(x, y).
+
+問題2.3.4.
+LESS(2):
+    SUC(x, y)->LESS(x, y);
+    LESS(x, y)->SUC(y, z)->LESS(x, z).
+
+問題2.3.5.
+DEPTH_OF(2):
+    ATO_DE_KAK(u).
