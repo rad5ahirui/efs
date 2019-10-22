@@ -36,8 +36,14 @@ NOT_PRIME(2):
 
 (h)
 RELPRIME(2):
-    ATO_DE_KA(k, u).
+    NOT_ZERO(a)->NOT_ZERO(b)->PROD(a, x, p)->PROD(b, y, q)
+    ->SUM(p, q, 1)->RELPRIME(p, q).
 
 (i)
-BASE_TWO_LENGTH(2).
-    ATO_DE_KA(k, u).
+BASE_TWO_LENGTH(2):
+    BASE_TWO_LENGTH(0, 1);
+    BASE_TWO_LENGTH(1, 1);
+    NOT_ZERO(x)->BASE_TWO_LENGTH(x, y)->SUC(x, z)->POWER_OF_TWO(z)
+    ->SUC(y, w)->BASE_TWO_LENGTH(z, w);
+    NOT_ZERO(x)->BASE_TWO_LENGTH(x, y)->SUC(x, z)->NOT_POWER_OF_TWO(z)
+    ->BASE_TWO_LENGTH(z, y).
