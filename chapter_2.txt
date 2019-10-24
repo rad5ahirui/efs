@@ -72,4 +72,26 @@ LESS(2):
 
 問題2.3.5.
 DEPTH_OF(2):
-    ATO_DE_KAK(u).
+    ATOM(a)->NUM(b)->DEPTH_OF(a, b);
+    DEPTH_OF(x, y)->IMSUB(z, w, v)->SUC(y, u)->DEPTH_OF(z, u).
+
+問題2.3.6.
+SAME_DEPTH(2):
+    DEPTH_OF(x, y)->DEPTH_OF(z, y)->SAME_DEPTH(x, z).
+
+NOT_SAME_DEPTH(2):
+    LESS(x, y)->DEPTH_OF(z, x)->DEPTH_OF(w, y)->NOT_SAME_DEPTH(z, w).
+    NOT_SAME_DEPTH(x, y)->NOT_SAME_DEPTH(y, x).
+
+問題2.3.7.
+NOT_EQUAL(2):
+    NOTEQ(x, y)->NOT_EQUAL(x, y);
+    ATOM(x)->ATOM(y)->NOTEQ(z, w)->IMSUB(v, x, z)->IMSUB(u, y, w)
+    ->NOT_EQUAL(v, u);
+    NOT_EQUAL(x, y)->NOT_EQUAL(y, x);
+    NOT_EQUAL(x, y)->SUBTREE(z, x)->NOT_EQUAL(z, y).
+
+問題2.3.8.
+REPLACE(4):
+    ATOM(x)->ATOM(y)->ATOM(z)->REPLACE(x, y, z, z);
+    atodekaku.
