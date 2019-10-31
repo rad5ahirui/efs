@@ -120,5 +120,6 @@ NOT_EQUAL(2):
 ```
 REPLACE(4):
     ATOM(x)->ATOM(y)->ATOM(z)->REPLACE(x, y, z, z);
-    atodekaku.
+    REPLACE(x, y, z, w)->REPLACE(u, y, z, v)
+    ->IMSUB(s, x, u)->IMSUB(t, w, v)->REPLACE(s, y, z, t).
 ```
