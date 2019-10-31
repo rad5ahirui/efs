@@ -1,40 +1,42 @@
 # 2 EFS言語の族
-## 問題2.1.1.
-### (a)
+## 2.2 EFS言語
+### 問題2.2.1.
+問題 2.**1**.1となっていたが, おそらく間違いだろう.
+#### (a)
 ```
 NOT_DIVIDES(2):
     NOT_ZERO(r)->REMAINDER(a, b, r)->NOT_DIVIDES(a, b).
 ```
-### (b)
+#### (b)
 ```
 EVEN(1):
     EVEN(0);
     EVEN(x)->SUM(x, 2, y)->EVEN(y).
 ```
-### (c)
+#### (c)
 ```
 NOT_EVEN(1):
     EVEN(x)->SUC(x, y)->NOT_EVEN(y).
 ```
-### (d)
+#### (d)
 ```
 POWER_OF_TWO(1):
     POWER_OF_TWO(1);
     POWER_OF_TWO(x)->PROD(x, 2, y)->POWER_OF_TWO(y).
 ```
-### (e)
+#### (e)
 ```
 NOT_POWER_OF_TWO(1):
     POWER_OF_TWO(x)->POWER_OF_TWO(y)->QUOTIENT(x, y, 2)
     ->LESS(x, z)->LESS(z, y)->NOT_POWER_OF_TWO(z).
 ```
-### (f)
+#### (f)
 ```
 POWER(2):
     NOT_ZERO(y)->POWER(1, y);
     POWER(x, y)->PROD(x, y, z)->POWER(z, y).
 ```
-### (g)
+#### (g)
 ```
 NOT_PRIME(2):
     NOT_PRIME(0);
@@ -42,13 +44,13 @@ NOT_PRIME(2):
     NOT_ZERO(q)->LESS(b, a)->QUOTIENT_AND_REMAINDER(a, b, q, 0)
     ->NOT_PRIME(a).
 ```
-### (h)
+#### (h)
 ```
 RELPRIME(2):
     NOT_ZERO(a)->NOT_ZERO(b)->PROD(a, x, p)->PROD(b, y, q)
     ->SUM(p, q, 1)->RELPRIME(a, b).
 ```
-### (i)
+#### (i)
 ```
 BASE_TWO_LENGTH(2):
     BASE_TWO_LENGTH(0, 1);
@@ -59,7 +61,8 @@ BASE_TWO_LENGTH(2):
     ->BASE_TWO_LENGTH(z, y).
 ```
 
-## 問題2.3.1.
+## 2.3 2分木
+### 問題2.3.1.
 ```
 SUBTREE(2):
     IMSUB(x, l, r)->SUBTREE(x, x);
@@ -68,7 +71,7 @@ SUBTREE(2):
     SUBTREE(x, y)->SUBTREE(z, w)->SUBTREE(x, w).
 ```
 
-## 問題2.3.2.
+### 問題2.3.2.
 a, bを異なる原子記号とする.
 ```
 NUM(2):
@@ -76,27 +79,27 @@ NUM(2):
     NUM(x)->IMSUB(y, a, x)->NUM(y).
 ```
 
-## 問題2.3.3.
+### 問題2.3.3.
 ```
 SUC(2):
     NUM(x)->IMSUB(y, a, x)->SUC(x, y).
 ```
 
-## 問題2.3.4.
+### 問題2.3.4.
 ```
 LESS(2):
     SUC(x, y)->LESS(x, y);
     LESS(x, y)->SUC(y, z)->LESS(x, z).
 ```
 
-## 問題2.3.5.
+### 問題2.3.5.
 ```
 DEPTH_OF(2):
     ATOM(a)->NUM(b)->DEPTH_OF(a, b);
     DEPTH_OF(x, y)->IMSUB(z, w, v)->SUC(y, u)->DEPTH_OF(z, u).
 ```
 
-## 問題2.3.6.
+### 問題2.3.6.
 ```
 SAME_DEPTH(2):
     DEPTH_OF(x, y)->DEPTH_OF(z, y)->SAME_DEPTH(x, z).
@@ -106,7 +109,7 @@ NOT_SAME_DEPTH(2):
     NOT_SAME_DEPTH(x, y)->NOT_SAME_DEPTH(y, x).
 ```
 
-## 問題2.3.7.
+### 問題2.3.7.
 ```
 NOT_EQUAL(2):
     NOTEQ(x, y)->NOT_EQUAL(x, y);
@@ -116,10 +119,43 @@ NOT_EQUAL(2):
     NOT_EQUAL(x, y)->SUBTREE(z, x)->NOT_EQUAL(z, y).
 ```
 
-## 問題2.3.8.
+### 問題2.3.8.
 ```
 REPLACE(4):
     ATOM(x)->ATOM(y)->REPLACE(x, x, y, y);
     REPLACE(x, y, z, w)->REPLACE(u, y, z, v)
     ->IMSUB(s, x, u)->IMSUB(t, w, v)->REPLACE(s, y, z, t).
 ```
+
+## 2.4 集合
+### 問題2.4.1.
+```
+MEMBER_OF(2):
+    ATOM_OF(x, y)->MEMBER_OF(x, y);
+    ADDMEM(x, y, z)->MEMBER_OF(y, z).
+```
+
+### 問題2.4.2.
+`ADDMEM`の定義から`x`は集合だからこれでおｋ?
+```
+SET(1):
+    ADDMEM(x, y, z)->SET(x).
+```
+
+### 問題2.4.3.
+```
+SUBSET(2):
+    SET(x)->SUBSET(x, x);
+    SET(x)->ADDMEM(x, y, z)->SUBSET(x, z);
+```
+
+### 問題2.4.4.
+```
+UNION(3):
+    SET(x)->UNION(x, x, x);
+    UNION(x, y, z)->ADDMEM(x, u, v)->ADDMEM(y, s, t)->UNION(v, t, z);
+    UNION(x, y, z)->UNION(x, z, y).
+```
+
+### 問題2.4.5.
+無理じゃね?
