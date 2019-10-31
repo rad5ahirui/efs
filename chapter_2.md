@@ -119,7 +119,7 @@ NOT_EQUAL(2):
 ## 問題2.3.8.
 ```
 REPLACE(4):
-    ATOM(x)->ATOM(y)->ATOM(z)->REPLACE(x, y, z, z);
+    ATOM(x)->ATOM(y)->REPLACE(x, x, y, y);
     REPLACE(x, y, z, w)->REPLACE(u, y, z, v)
     ->IMSUB(s, x, u)->IMSUB(t, w, v)->REPLACE(s, y, z, t).
 ```
