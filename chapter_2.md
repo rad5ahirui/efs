@@ -191,7 +191,7 @@ DEPTH_OF(2):
 ### 問題2.4.10.
 ```
 SAME_DEPTH(2):
-    DEPTH_OF(x, n)->DEPTH_OF(y, n)->SAME_DEPTH(x, y);
+    DEPTH_OF(x, n)->DEPTH_OF(y, n)->SAME_DEPTH(x, y).
 
 NOT_SAME_DEPTH(2):
     MEMBER_OF(m, n)->DEPTH_OF(x, m)->DEPTH_OF(y, n)->NOT_SAME_DEPTH(x, y);
