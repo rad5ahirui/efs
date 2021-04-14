@@ -177,7 +177,7 @@ NUM(1):
 SUC(2):
     NUM(n)->ADDMEM(n, n, m)->UNION(l, m, n)->SUC(n, l).
 ```
-### 問題2.4.9
+### 問題2.4.9.
 `1`を`SUC(0, 1)`となる集合とおく（`->SUC(0, 1)->`を挟めばよい）．
 ```
 DEPTH_OF(2):
@@ -187,4 +187,13 @@ DEPTH_OF(2):
     ->SUC(n, m)->DEPTH_OF(z, m);
     DEPTH_OF(x, m)->DEPTH_OF(y, n)->UNION(z, x, y)
     ->UNION(l, m, n)->DEPTH_OF(z, l).
+```
+### 問題2.4.10.
+```
+SAME_DEPTH(2):
+    DEPTH_OF(x, n)->DEPTH_OF(y, n)->SAME_DEPTH(x, y);
+
+NOT_SAME_DEPTH(2):
+    MEMBER_OF(m, n)->DEPTH_OF(x, m)->DEPTH_OF(y, n)->NOT_SAME_DEPTH(x, y);
+    NOT_SAME_DEPTH(x, y)->NOT_SAME_DEPTH(y, x).
 ```
