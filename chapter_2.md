@@ -153,7 +153,7 @@ SUBSET(2):
 ```
 UNION(3):
     SET(x)->UNION(x, x, x);
-    UNION(x, y, z)->ADDMEM(x, u, v)->ADDMEM(y, s, t)->UNION(v, t, z);
+    UNION(x, y, z)->ADDMEM(x, a, v)->ADDMEM(y, a, t)->UNION(v, t, z);
     UNION(x, y, z)->UNION(x, z, y).
 ```
 
