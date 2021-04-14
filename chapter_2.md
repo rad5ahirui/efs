@@ -170,12 +170,12 @@ foreach文にあたる構造がないと任意の集合`x`に属するすべて�
 ```
 NUM(1):
     NUM(0);
-    NUM(n)->ADDMEM(n, n, m)->NUM(m).
+    NUM(n)->ADDMEM(n, n, m)->UNION(l, m, n)->NUM(l).
 ```
 ### 問題2.4.8.
 ```
 SUC(2):
-    NUM(n)->ADDMEM(n, n, m)->SUC(n, m).
+    NUM(n)->ADDMEM(n, n, m)->UNION(l, m, n)->SUC(n, l).
 ```
 ### 問題2.4.9
 `1`を`SUC(0, 1)`となる集合とおく（`->SUC(0, 1)->`を挟めばよい）．
