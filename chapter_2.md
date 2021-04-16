@@ -210,7 +210,6 @@ NOT_SUBSET(2):
 ### 問題2.4.13.
 ```
 NOT_NUM(1):
-    NUM(n)->NOT_SAME_DEPTH(x, n)->NOT_NUM(x);
     NUM(m)->SAME_DEPTH(x, m)->ADDMEM(x, x, y)->SUC(m, n)
-    ->NOT_EQUAL(y, n)->NOT_NUM(x);
+    ->NOT_EQUAL(y, n)->NOT_NUM(x).
 ```
