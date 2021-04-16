@@ -197,3 +197,20 @@ NOT_SAME_DEPTH(2):
     MEMBER_OF(m, n)->DEPTH_OF(x, m)->DEPTH_OF(y, n)->NOT_SAME_DEPTH(x, y);
     NOT_SAME_DEPTH(x, y)->NOT_SAME_DEPTH(y, x).
 ```
+### 問題2.4.11.
+`NOT_MEMBER_OF(2)`の`DIFFERENT(*, *);`で終わる行を抜き出す．
+
+### 問題2.4.12.
+`<x, y>`: `x`が`y`の部分集合でない．
+```
+NOT_SUBSET(2):
+    SET(x)->SET(y)->NOT_EQUAL(x, y)->MEMBER_OF(a, x)
+    ->NOT_MEMBER_OF(a, y)->NOT_SUBSET(x, y).
+```
+### 問題2.4.13.
+```
+NOT_NUM(1):
+    NUM(n)->NOT_SAME_DEPTH(x, n)->NOT_NUM(x);
+    NUM(m)->SAME_DEPTH(x, m)->ADDMEM(x, x, y)->SUC(m, n)
+    ->NOT_EQUAL(y, n)->NOT_NUM(x);
+```
